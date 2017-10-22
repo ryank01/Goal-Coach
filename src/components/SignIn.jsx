@@ -52,6 +52,7 @@ class SignIn extends Component {
           </div>
           <div>{this.state.error.message}</div>
           <div className="link"><Link to={'/signup'}>Sign Up Instead</Link></div>
+          <span className="link"><Link to={'/resetpassword'}>Forgot Password</Link></span>
         </div>
       </div>
     )

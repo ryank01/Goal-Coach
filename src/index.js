@@ -9,16 +9,15 @@ import {firebaseApp} from './firebase';
 import App from './components/App';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
+import PasswordReset from './components/PasswordReset';
 
 const store = createStore(reducer);
 firebaseApp.auth().onAuthStateChanged(user => {
   if(user) {
-    console.log('user has signed in or up', user);
     const {email} = user;
     store.dispatch(logUser(email));
     browserHistory.push('/app');
   } else {
-    console.log('user has signed out or still needs to sign in');
     browserHistory.replace('/signin');
   }
 })
@@ -29,6 +28,7 @@ ReactDOM.render(
       <Route path="/app" component={App} />
       <Route path="/signin" component={SignIn} />
       <Route path="/signup" component={SignUp} />
+      <Route path="/resetpassword" component={PasswordReset} />
     </Router>
   </Provider>, document.getElementById('root')
 )
